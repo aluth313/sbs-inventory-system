@@ -199,6 +199,7 @@
                       <span aria-hidden="true"> &times; </span>
                   </button>
                   <h3 class="modal-title modalbahanbaku"></h3>
+                  <input type="text" style="width: 30%; float: right;" name="search" id="search" class="form-control" placeholder="Search...">
               </div>
               <div class="modal-body">
                 <form id="form-baku" method="post" data-toggle="validator">
@@ -246,7 +247,7 @@
           $("#bakumaterialname").select2({
               theme: "bootstrap"
           });
-      
+
           var table = $('#barang-table').DataTable({
               processing:true,
               serverSide:true,
@@ -485,6 +486,14 @@
                 },
             });
           }
+
+          $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $('#table-quantity tr').filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+          
 
         
 </script>

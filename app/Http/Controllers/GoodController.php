@@ -295,12 +295,16 @@ class GoodController extends Controller
         
         $html = '';
         $html .= '<table class="table table-bordered table-striped">';
+        $html .= '<thead>';
         $html .= '<tr>';
         $html .= '<th>No</th>';
         $html .= '<th>Nama Material</th>';
         $html .= '<th>Qty Input</th>';
         $html .= '<th>Qty Needed</th>';
         $html .= '</tr>';
+        $html .= '</thead>';
+        $html .= '<tbody id="table-quantity">';
+        
         
         $nomor =0;
         foreach($query as $k)
@@ -330,6 +334,7 @@ class GoodController extends Controller
             $html .= '<td><input value="'.$qt.'" style="text-align:right;" id="qty_'.$k->id.'" name="qtymat[]" type="text" class="form-control"></td>';
             $html .= '</tr>';
         }
+        $html .= '</tbody>';
         
         $html .= '</table>';
         
