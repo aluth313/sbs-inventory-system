@@ -1,0 +1,39 @@
+
+.bulat{
+	border-radius: 4px;
+}
+
+#item-table_length{
+	display: none;	
+}
+
+#item-table_filter{
+	display: none;
+}
+
+#item-table_paginate{
+	margin-right: 160px;
+}
+
+#item-table_info{
+	display: none;
+}
+
+
+#tmp-service-table_length{
+	display: none;	
+}
+
+#tmp-service-table_filter{
+	display: none;
+}
+
+
+
+#tmp-service-table_info{
+	display: none;
+}
+
+#table-cari-tt_length{
+	display: none;
+}
