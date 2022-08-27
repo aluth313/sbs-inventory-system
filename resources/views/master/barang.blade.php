@@ -37,6 +37,7 @@
                     <th width="18%">Nama Barang</th>
                     <th width="10%">Kategori</th>
                     <th width="7%">Satuan</th>
+                    <th width="9%">Co Number</th>
                     <th width="9%">H.Beli</th>
                     <th width="9%">H.Jual</th>
                     <th width="8%">Stok</th>
@@ -53,6 +54,7 @@
                     <th width="18%">Nama Barang</th>
                     <th width="10%">Kategori</th>
                     <th width="7%">Satuan</th>
+                    <th width="9%">Co Number</th>
                     <th width="9%">H.Beli</th>
                     <th width="9%">H.Jual</th>
                     <th width="8%">Stok</th>
@@ -88,6 +90,14 @@
                               <span class="help-block with-errors"></span>
                           </div>
                       </div>
+
+                      <div class="form-group">
+                        <label for="co_number" class="col-md-3 control-label">Co Number  :</label>
+                        <div class="col-md-8">
+                            <input type="text" id="co_number" name="co_number" class="form-control" autofocus required>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
 
                       <div class="form-group">
                         <label for="kategori" class="col-md-3 control-label">Kategori :</label>
@@ -246,6 +256,7 @@
                 {data:'good_name', name: 'good_name'},
                 {data:'category_name', name: 'kategori'},
                 {data:'unit', name: 'unit'},
+                {data:'co_number', name: 'co_number'},
                 {data:'b_price', name: 'b_price'},
                 {data:'s_price', name: 's_price'},
                 {data:'stok', name: 'stok'},
@@ -377,6 +388,7 @@
                       contentType:false,
                       processData:false,
                       success : function(data){
+                        console.log(data);
                         if(data.success == true){
                           $('#modal-barang').modal('hide');
                           table.ajax.reload(null, false);
@@ -457,8 +469,21 @@
           
           
           function ubahitem(id) {
-              var nilai = $("#inp_"+id).val();
-              $("#qty_"+id).val(nilai/100);
+            var nilai = $("#inp_"+id).val();
+            $.ajax({
+                url      :  "{{ url('material/') }}"+'/'+id+'/'+nilai,
+                type     :  "GET",
+                dataType :  "JSON",
+                success  :   function(data){
+                  if (data == false) {
+                    alert('Stok tidak cukup');
+                    $("#inp_"+id).val(0);
+                    $("#qty_"+id).val(0);
+                  }else{
+                    $("#qty_"+id).val(nilai/100);
+                  }
+                },
+            });
           }
 
         

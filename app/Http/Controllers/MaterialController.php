@@ -68,6 +68,12 @@ class MaterialController extends Controller
     {
         //
     }
+    
+    public function checkStok($id, $quantity)
+    {
+        $check = Material::find($id);
+        return $check->stok > $quantity ? 'true' : 'false';
+    }
 
     /**
      * Show the form for editing the specified resource.

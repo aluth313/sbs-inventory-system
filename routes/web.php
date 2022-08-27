@@ -54,6 +54,7 @@ Route::post('hapusBaku', 'GoodController@hapusBahanBaku');
 Route::post('materiallist', 'GoodController@materiallist');
 
 Route::get('material', 'MaterialController@index');
+Route::get('material/{id}/{quantity}', 'MaterialController@checkStok');
 Route::get('api.material', 'MaterialController@apiMaterial')->name('api.material');
 Route::resource('material', 'MaterialController');
 

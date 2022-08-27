@@ -236,6 +236,10 @@ class GoodController extends Controller
                 ]) ;
                 
                 $query = DB::table('materialcombines')->insert($datainsert); 
+
+                $updateStokMaterial = Material::find($idmat[$i]);
+                $updateStokMaterial->stok = $updateStokMaterial->stok - ($qtymat[$i] * 100);
+                $updateStokMaterial->save();
             }
                
         }
