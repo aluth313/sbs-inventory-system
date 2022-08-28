@@ -8,12 +8,13 @@ use App\Material;
 use App\Unit;
 use App\Category;
 use DB;
+use Auth;
 class MaterialController extends Controller
 {
     
     public function __construct(){
         $this->middleware('auth');
-        $this->middleware('admin');
+        // $this->middleware('admin');
     }
     /**
      * Display a listing of the resource.
@@ -147,8 +148,10 @@ class MaterialController extends Controller
             })
 
             ->addColumn('action', function($material){
-                return '<center><a onclick="editForm('. $material->id.')" style="margin-left:2px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>'.
-                '<a onclick="deleteData('. $material->id.')" style="margin-left:2px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a></center>';
+                if(in_array(Auth::user()->level, ['ADMIN','ADMIN BAHAN BAKU'])){
+                    return '<center><a onclick="editForm('. $material->id.')" style="margin-left:2px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>'.
+                    '<a onclick="deleteData('. $material->id.')" style="margin-left:2px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a></center>';
+                }
             })->rawColumns(['b_price', 'stok','stok_2', 'action'])->make(true);
     }
 

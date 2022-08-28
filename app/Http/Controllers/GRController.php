@@ -303,16 +303,18 @@ class GRController extends Controller
             })
          
             ->addColumn('action', function($gr){
-                if($gr->status == 0){
-                        return '<center>
-                            <a id="btn-cetak" data-id = "'.$gr->id.'" data-inv = "'.$gr->gr_no.'" style="margin-left:5px;" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-print"></i></a>'.
-                            '<a href="'.url('editgr').'/'.$gr->gr_no.'" style="margin-left:5px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>'.
-                            '<a id="btn-hapus" data-id = "'.$gr->id.'" data-inv = "'.$gr->gr_no.'" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a></center>';
-                }else{
-                    return '<center><a id="btn-cetak" data-id = "'.$gr->id.'" data-inv = "'.$gr->gr_no.'" style="margin-left:5px;" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-print"></i></a>'.
-                            '<a disabled="disabled" style="margin-left:5px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>'.
-                            '<a disabled="disabled" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a></center>';
-                            
+                if (in_array(Auth::user()->level, ['ADMIN','KEPALA PRODUKSI'])) {
+                    if($gr->status == 0){
+                            return '<center>
+                                <a id="btn-cetak" data-id = "'.$gr->id.'" data-inv = "'.$gr->gr_no.'" style="margin-left:5px;" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-print"></i></a>'.
+                                '<a href="'.url('editgr').'/'.$gr->gr_no.'" style="margin-left:5px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>'.
+                                '<a id="btn-hapus" data-id = "'.$gr->id.'" data-inv = "'.$gr->gr_no.'" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a></center>';
+                    }else{
+                        return '<center><a id="btn-cetak" data-id = "'.$gr->id.'" data-inv = "'.$gr->gr_no.'" style="margin-left:5px;" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-print"></i></a>'.
+                                '<a disabled="disabled" style="margin-left:5px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>'.
+                                '<a disabled="disabled" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a></center>';
+                                
+                    }
                 }
                 
             })->rawColumns(['total','action'])->make(true);

@@ -22,8 +22,9 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          
+          @if(in_array(Auth::user()->level, ['ADMIN','KEPALA PRODUKSI']))
           <button onclick="addForm()" id="tambah_barang" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah Barang</button>
+          @endif
           <div class="box-tools pull-right">
             
           </div>

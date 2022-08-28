@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Datatables;
 use App\Supplier;
+use Auth;
 
 class SupplierController extends Controller
 {
@@ -107,9 +108,11 @@ class SupplierController extends Controller
         return Datatables::of($supplier)
             
             ->addColumn('action', function($supplier){
-                return '<center>
-                <a onclick="editForm('. $supplier->id.')" style="margin-bottom:5px;width:70px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>'.
-                '<br><a onclick="deleteData('. $supplier->id.')" style="width:70px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a></center>';
+                if(in_array(Auth::user()->level, ['ADMIN'])){
+                    return '<center>
+                    <a onclick="editForm('. $supplier->id.')" style="margin-bottom:5px;width:70px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>'.
+                    '<br><a onclick="deleteData('. $supplier->id.')" style="width:70px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a></center>';
+                }
             })->rawColumns(['action'])->make(true);
     }
 }

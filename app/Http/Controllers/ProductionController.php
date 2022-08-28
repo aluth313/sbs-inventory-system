@@ -178,7 +178,9 @@ class ProductionController extends Controller
                 $html .='<td>'.$k->good_name.'</td>';
                 $html .='<td style="text-align:right;">'.$k->quantity.'</td>';
                 $html .='<td style="text-align:right;">'.$k->antrian.'</td>';
-                $html .='<td><center><a onclick="adjustmaterial('.$k->id.', '.$k->quantity.')" href="javascript:void(0);">Adjust</a></center></td>';
+                if (in_array(Auth::user()->level, ['ADMIN','ADMIN PRODUKSI'])) {
+                    $html .='<td><center><a onclick="adjustmaterial('.$k->id.', '.$k->quantity.')" href="javascript:void(0);">Adjust</a></center></td>';
+                }
                 $html .='<td><center><a onclick="printbatch('.$k->id.')" href="javascript:void(0);">Print</a></center></td>';
                 $html .='</tr>'; 
             }
@@ -1029,15 +1031,17 @@ class ProductionController extends Controller
             
             })
             ->addColumn('action', function($production){
-                if($production->status == 0){
-                        return '<center><a id="btn-cetak" data-id = "'.$production->id.'" data-inv = "'.$production->production_number.'" style="margin-left:5px;" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-print"></i></a>'.
-                            '<a href="'.url('edit_produksi').'/'.$production->production_number.'" style="margin-left:5px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>'.
-                            '<a id="btn-hapus" data-id = "'.$production->id.'" data-inv = "'.$production->production_number.'" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a></center>';
-                }else{
-                    return  '<center><a id="btn-cetak" data-id = "'.$production->id.'" data-inv = "'.$production->production_number.'" style="margin-left:5px;" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-print"></i></a>'.
-                            '<a disabled="disabled" style="margin-left:5px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>'.
-                            '<a disabled="disabled" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a></center>';
-                            
+                if (in_array(Auth::user()->level, ['ADMIN','ADMIN PRODUKSI','KEPALA PRODUKSI'])) {
+                    if($production->status == 0){
+                            return '<center><a id="btn-cetak" data-id = "'.$production->id.'" data-inv = "'.$production->production_number.'" style="margin-left:5px;" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-print"></i></a>'.
+                                '<a href="'.url('edit_produksi').'/'.$production->production_number.'" style="margin-left:5px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>'.
+                                '<a id="btn-hapus" data-id = "'.$production->id.'" data-inv = "'.$production->production_number.'" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a></center>';
+                    }else{
+                        return  '<center><a id="btn-cetak" data-id = "'.$production->id.'" data-inv = "'.$production->production_number.'" style="margin-left:5px;" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-print"></i></a>'.
+                                '<a disabled="disabled" style="margin-left:5px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i></a>'.
+                                '<a disabled="disabled" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a></center>';
+                                
+                    }
                 }
                 
             })->rawColumns(['batch','total','action'])->make(true);

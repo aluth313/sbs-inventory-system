@@ -9,12 +9,14 @@ use App\Unit;
 use App\Category;
 use DB;
 use App\Material;
+use Auth;
+
 class GoodController extends Controller
 {
     
     public function __construct(){
         $this->middleware('auth');
-        $this->middleware('admin');
+        // $this->middleware('admin');
     }
     /**
      * Display a listing of the resource.
@@ -174,7 +176,11 @@ class GoodController extends Controller
                 
                 $HTML = '';
                 $HTML .= '<table style="font-size:12px;" class="table table-bordered table-striped">';
-                $HTML .= '<tr><th>No</th><th>Material</th><th>Qty</th><th><center><button onclick="tambahBaku('.$good->id.')" class="btn btn-xs btn-success "><i class="glyphicon glyphicon-plus"></i></button></center></th></tr>';
+                if (in_array(Auth::user()->level, ['ADMIN','KEPALA PRODUKSI'])) {
+                    $HTML .= '<tr><th>No</th><th>Material</th><th>Qty</th><th><center><button onclick="tambahBaku('.$good->id.')" class="btn btn-xs btn-success "><i class="glyphicon glyphicon-plus"></i></button></center></th></tr>';
+                }else{
+                    $HTML .= '<tr><th>No</th><th>Material</th><th>Qty</th><th><center></center></th></tr>';
+                }
                 $nom = 0;
                 foreach($mat as $m)
                 {
@@ -187,9 +193,11 @@ class GoodController extends Controller
             })
 
             ->addColumn('action', function($good){
-                return '<center><a onclick="editForm('. $good->id.')" style="width:80px;margin-bottom:3px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>'.
-                '<br><a onclick="deleteData('. $good->id.')" style="width:80px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>'.
-                '<br><a style="width:80px;" href="/addProductionAutomationFill/'.$good->id.'" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-refresh"></i> Produksi</a></center>';
+                if (in_array(Auth::user()->level, ['ADMIN','KEPALA PRODUKSI'])) {
+                    return '<center><a onclick="editForm('. $good->id.')" style="width:80px;margin-bottom:3px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>'.
+                    '<br><a onclick="deleteData('. $good->id.')" style="width:80px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>'.
+                    '<br><a style="width:80px;" href="/addProductionAutomationFill/'.$good->id.'" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-refresh"></i> Produksi</a></center>';
+                }
             })->rawColumns(['b_price', 's_price', 'stok', 'bahanbaku', 'action'])->make(true);
     }
 

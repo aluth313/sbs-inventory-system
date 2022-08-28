@@ -105,8 +105,11 @@
                           <div class="col-md-8">
                               <select type="number" id="level" name="level" class="form-control" required>
                                 <option value=""> -- Pilih Level -- </option>
-                                <option value="ADMIN"> Administrator</option>
-                                <option value="OPERATOR"> Operator</option>
+                                <option value="ADMIN"> SUPER ADMIN</option>
+                                <option value="KEPALA PRODUKSI"> KEPALA PRODUKSI</option>
+                                <option value="ADMIN BAHAN BAKU"> ADMIN BAHAN BAKU</option>
+                                <option value="ADMIN PRODUKSI"> ADMIN PRODUKSI</option>
+                                <option value="STAFF PRODUKSI"> STAFF PRODUKSI</option>
                               </select>
                               <span class="help-block with-errors"></span>
                           </div>

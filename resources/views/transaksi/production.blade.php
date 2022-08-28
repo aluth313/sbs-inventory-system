@@ -22,8 +22,9 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          
+          @if(in_array(Auth::user()->level, ['ADMIN','KEPALA PRODUKSI']))
           <a href="{{ url('addProduction') }}"><button id="tambah_purchase" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Produksi</button></a>
+          @endif
           <div class="box-tools pull-right">
             
           </div>
