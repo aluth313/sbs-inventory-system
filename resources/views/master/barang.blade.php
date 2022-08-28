@@ -126,6 +126,28 @@
                       </div>
 
                       <div class="form-group">
+                        <label for="grade" class="col-md-3 control-label">Grade :</label>
+                        <div class="col-md-8">
+                            <input type="text" id="grade" name="grade" class="form-control" autofocus required>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label for="colour" class="col-md-3 control-label">Colour :</label>
+                        <div class="col-md-8">
+                            <input type="text" id="colour" name="colour" class="form-control" autofocus required>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label for="hardness" class="col-md-3 control-label">Hardness :</label>
+                        <div class="col-md-8">
+                            <input type="text" id="hardness" name="hardness" class="form-control" autofocus required>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+
+                      <div class="form-group">
                         <label for="description" class="col-md-3 control-label">Deskripsi :</label>
                         <div class="col-md-8">
                             <textarea style="height: 80px;" id="description" name="description" class="form-control"></textarea>
@@ -355,6 +377,10 @@
 
                       $('#id').val(data.id);
                       $('#good_name').val(data.good_name);
+                      $('#co_number').val(data.co_number);
+                      $('#grade').val(data.grade);
+                      $('#colour').val(data.colour);
+                      $('#hardness').val(data.hardness);
                       $('#kategori').val(data.kategori);
                       $('#unit').val(data.unit);
                       $('#description').val(data.description);

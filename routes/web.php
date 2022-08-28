@@ -269,6 +269,7 @@ Route::get('print_flow/{dari}/{sampai}/{doc?}', 'FlowController@cetakFlow');
 Route::resource('production', 'ProductionController');
 Route::get('api.production', 'ProductionController@apiProduction')->name('api.production');
 Route::get('addProduction', 'ProductionController@addProduction');
+Route::get('addProductionAutomationFill/{id}', 'ProductionController@addProductionAutomationFill');
 Route::get('caribrgproduksi/{brg}', 'ProductionController@cari');
 Route::get('api.productionitem', 'ProductionController@apiItem')->name('api.productionitem');
 Route::post('getbahanbaku', 'ProductionController@getBahan');

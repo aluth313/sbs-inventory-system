@@ -188,7 +188,8 @@ class GoodController extends Controller
 
             ->addColumn('action', function($good){
                 return '<center><a onclick="editForm('. $good->id.')" style="width:80px;margin-bottom:3px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>'.
-                '<br><a onclick="deleteData('. $good->id.')" style="width:80px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a></center>';
+                '<br><a onclick="deleteData('. $good->id.')" style="width:80px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>'.
+                '<br><a style="width:80px;" href="/addProductionAutomationFill/'.$good->id.'" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-refresh"></i> Produksi</a></center>';
             })->rawColumns(['b_price', 's_price', 'stok', 'bahanbaku', 'action'])->make(true);
     }
 

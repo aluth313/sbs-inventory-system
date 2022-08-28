@@ -53,6 +53,18 @@ class ProductionController extends Controller
         $batch = DB::table('antrian')->get();
         return view('transaksi.add_production', compact('barang', 'material', 'batch', 'customer'));
     }
+    
+    public function addProductionAutomationFill($id)
+    {
+        $material = Material::all();
+        $barang = Good::all();
+        $customer = Customer::all();
+        TmpProduction::truncate();
+        DB::table('materialconsume')->delete();
+        $batch = DB::table('antrian')->get();
+        $good = Good::find($id);
+        return view('transaksi.add_production_automationfill', compact('barang', 'good', 'material', 'batch', 'customer'));
+    }
 
     /**
      * Store a newly created resource in storage.
