@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Jul 2022 pada 06.56
--- Versi server: 10.4.22-MariaDB
--- Versi PHP: 7.4.27
+-- Generation Time: Aug 30, 2022 at 05:02 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `antrian`
+-- Table structure for table `antrian`
 --
 
 CREATE TABLE `antrian` (
@@ -34,7 +34,7 @@ CREATE TABLE `antrian` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `antrian`
+-- Dumping data for table `antrian`
 --
 
 INSERT INTO `antrian` (`id`, `batch`, `antrian`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `antrian` (`id`, `batch`, `antrian`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cashes`
+-- Table structure for table `cashes`
 --
 
 CREATE TABLE `cashes` (
@@ -60,7 +60,7 @@ CREATE TABLE `cashes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `cashes`
+-- Dumping data for table `cashes`
 --
 
 INSERT INTO `cashes` (`id`, `cash_number`, `trans_date`, `category`, `description`, `cash_value`, `created_at`, `updated_at`) VALUES
@@ -468,7 +468,7 @@ INSERT INTO `cashes` (`id`, `cash_number`, `trans_date`, `category`, `descriptio
 (495, 'CH-000495', '2019-10-18 17:00:00', 1, 'uang bbm  cemry dri kkm', 200000, '2019-10-21 07:29:27', '2019-10-21 07:29:27');
 
 --
--- Trigger `cashes`
+-- Triggers `cashes`
 --
 DELIMITER $$
 CREATE TRIGGER `KAS` AFTER INSERT ON `cashes` FOR EACH ROW BEGIN
@@ -529,7 +529,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cash_flows`
+-- Table structure for table `cash_flows`
 --
 
 CREATE TABLE `cash_flows` (
@@ -543,7 +543,7 @@ CREATE TABLE `cash_flows` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `cash_flows`
+-- Dumping data for table `cash_flows`
 --
 
 INSERT INTO `cash_flows` (`id`, `type`, `document`, `incash`, `outcash`, `created_at`, `updated_at`) VALUES
@@ -1057,7 +1057,7 @@ INSERT INTO `cash_flows` (`id`, `type`, `document`, `incash`, `outcash`, `create
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -1068,7 +1068,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `category_name`, `created_at`, `updated_at`) VALUES
@@ -1093,7 +1093,7 @@ INSERT INTO `categories` (`id`, `category_name`, `created_at`, `updated_at`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `costs`
+-- Table structure for table `costs`
 --
 
 CREATE TABLE `costs` (
@@ -1105,7 +1105,7 @@ CREATE TABLE `costs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `costs`
+-- Dumping data for table `costs`
 --
 
 INSERT INTO `costs` (`id`, `cost_name`, `description`, `created_at`, `updated_at`) VALUES
@@ -1115,7 +1115,7 @@ INSERT INTO `costs` (`id`, `cost_name`, `description`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `customers`
+-- Table structure for table `customers`
 --
 
 CREATE TABLE `customers` (
@@ -1130,7 +1130,7 @@ CREATE TABLE `customers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `customers`
+-- Dumping data for table `customers`
 --
 
 INSERT INTO `customers` (`id`, `customer_name`, `customer_address`, `jenis_kelamin`, `customer_phone`, `customer_foto`, `created_at`, `updated_at`) VALUES
@@ -1147,7 +1147,7 @@ INSERT INTO `customers` (`id`, `customer_name`, `customer_address`, `jenis_kelam
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `custpays`
+-- Table structure for table `custpays`
 --
 
 CREATE TABLE `custpays` (
@@ -1164,7 +1164,7 @@ CREATE TABLE `custpays` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `custpays`
+-- Dumping data for table `custpays`
 --
 
 INSERT INTO `custpays` (`id`, `payment_no`, `service_id`, `customer_id`, `customer_name`, `nilai_pembayaran`, `description`, `status`, `created_at`, `updated_at`) VALUES
@@ -1172,7 +1172,7 @@ INSERT INTO `custpays` (`id`, `payment_no`, `service_id`, `customer_id`, `custom
 (2, 'CPA-000002', 'SV-000002', 24, 'KKM', 2000000, 'lunas tanggal hari ini', 1, '2019-09-18 09:34:25', '2019-09-18 09:34:25');
 
 --
--- Trigger `custpays`
+-- Triggers `custpays`
 --
 DELIMITER $$
 CREATE TRIGGER `custpays_after_update` AFTER UPDATE ON `custpays` FOR EACH ROW BEGIN
@@ -1207,7 +1207,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `debts`
+-- Table structure for table `debts`
 --
 
 CREATE TABLE `debts` (
@@ -1224,7 +1224,7 @@ CREATE TABLE `debts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `debts`
+-- Dumping data for table `debts`
 --
 
 INSERT INTO `debts` (`id`, `payment_no`, `id_purchase`, `id_supplier`, `nama_supplier`, `nilai_pembayaran`, `description`, `status`, `created_at`, `updated_at`) VALUES
@@ -1234,7 +1234,7 @@ INSERT INTO `debts` (`id`, `payment_no`, `id_purchase`, `id_supplier`, `nama_sup
 (4, 'DBT-000004', 'PCH-000006', 17, 'Gasida', 6000000, 'lunas', 1, '2020-01-22 08:41:43', '2020-01-22 08:41:43');
 
 --
--- Trigger `debts`
+-- Triggers `debts`
 --
 DELIMITER $$
 CREATE TRIGGER `debt_payments` AFTER INSERT ON `debts` FOR EACH ROW BEGIN 
@@ -1268,7 +1268,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `expenses`
+-- Table structure for table `expenses`
 --
 
 CREATE TABLE `expenses` (
@@ -1282,7 +1282,7 @@ CREATE TABLE `expenses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `expenses`
+-- Dumping data for table `expenses`
 --
 
 INSERT INTO `expenses` (`id`, `cost_date`, `cost_id`, `description`, `cost_value`, `created_at`, `updated_at`) VALUES
@@ -1290,7 +1290,7 @@ INSERT INTO `expenses` (`id`, `cost_date`, `cost_id`, `description`, `cost_value
 (2, '2019-09-18', 8, 'beli solar genset', 50000, '2019-09-18 09:33:04', '2019-09-18 09:33:04');
 
 --
--- Trigger `expenses`
+-- Triggers `expenses`
 --
 DELIMITER $$
 CREATE TRIGGER `expenses_delete_kas` AFTER DELETE ON `expenses` FOR EACH ROW BEGIN
@@ -1320,7 +1320,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `goodreceipt`
+-- Table structure for table `goodreceipt`
 --
 
 CREATE TABLE `goodreceipt` (
@@ -1338,7 +1338,7 @@ CREATE TABLE `goodreceipt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `goodreceipt`
+-- Dumping data for table `goodreceipt`
 --
 
 INSERT INTO `goodreceipt` (`id`, `gr_no`, `po_no`, `supplier_id`, `description`, `user_id`, `total`, `gudang`, `status`, `created_at`, `updated_at`) VALUES
@@ -1381,12 +1381,12 @@ INSERT INTO `goodreceipt` (`id`, `gr_no`, `po_no`, `supplier_id`, `description`,
 (161, 'GR000161', 'PCH-000180', 35, '27-01-2022 (2701-22)', '23', 0, 1, 0, '2022-06-30 08:04:18', NULL),
 (162, 'GR000162', 'PCH-000181', 38, '28-01-2022 (SBP220101013, SBP 220101013)', '23', 0, 1, 0, '2022-06-30 08:05:26', NULL),
 (163, 'GR000163', 'PCH-000182', 43, '29-01-2022 (060-22)', '23', 0, 1, 0, '2022-06-30 08:06:18', NULL),
-(164, 'GR000164', 'PCH-000183', 45, '3411 + OIL 110', '23', 0, 1, 0, '2022-07-06 06:39:24', NULL);
+(164, 'GR000164', 'PCH-000183', 45, '3411 + OIL 110', '23', 0, 1, 1, '2022-07-06 06:39:24', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `goodreceipt_details`
+-- Table structure for table `goodreceipt_details`
 --
 
 CREATE TABLE `goodreceipt_details` (
@@ -1403,7 +1403,7 @@ CREATE TABLE `goodreceipt_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `goodreceipt_details`
+-- Dumping data for table `goodreceipt_details`
 --
 
 INSERT INTO `goodreceipt_details` (`id`, `ids`, `gr_no`, `po_no`, `gudang`, `item_cd`, `quantity`, `item_unit`, `item_price`, `item_total`) VALUES
@@ -1525,7 +1525,7 @@ INSERT INTO `goodreceipt_details` (`id`, `ids`, `gr_no`, `po_no`, `gudang`, `ite
 (445, 485, 'GR000164', 'PCH-000183', 1, 243, 150, 'KG', 0, 0);
 
 --
--- Trigger `goodreceipt_details`
+-- Triggers `goodreceipt_details`
 --
 DELIMITER $$
 CREATE TRIGGER `kurangin_stok` AFTER DELETE ON `goodreceipt_details` FOR EACH ROW BEGIN
@@ -1569,7 +1569,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `goods`
+-- Table structure for table `goods`
 --
 
 CREATE TABLE `goods` (
@@ -1585,26 +1585,40 @@ CREATE TABLE `goods` (
   `stok` int(11) NOT NULL,
   `foto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `co_number` int(11) DEFAULT NULL,
+  `grade` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `colour` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hardness` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `goods`
+-- Dumping data for table `goods`
 --
 
-INSERT INTO `goods` (`id`, `good_name`, `unit`, `description`, `b_price`, `s_price`, `r_price`, `d_price`, `kategori`, `stok`, `foto`, `created_at`, `updated_at`) VALUES
-(269, '.', 'KG', '.', 0, 0, 0, 0, 75, 0, NULL, '2022-06-30 08:37:18', '2022-06-30 08:37:18'),
-(271, '7420', 'KG', 'M8-57 CREAM 1402', 0, 0, 0, 0, 75, 100, NULL, '2022-07-02 04:13:56', '2022-07-02 04:13:56'),
-(272, '7417', 'KG', 'M.8-60 L/ BROWN 1233', 0, 0, 0, 0, 75, 200, NULL, '2022-07-05 08:06:56', '2022-07-05 08:06:56'),
-(273, '3411 + OIL', 'KG', '3411 + OIL', 0, 0, 0, 0, 59, 100, NULL, '2022-07-06 06:36:17', '2022-07-06 06:36:17'),
-(276, '7401', 'KG', 'TC.260-70 BLACK D', 0, 0, 0, 0, 75, 400, NULL, '2022-07-06 07:34:20', '2022-07-06 07:34:20'),
-(277, '7409', 'KG', 'TC.230 - 70 WHITE 0101 D', 0, 0, 0, 0, 75, 0, NULL, '2022-07-06 07:41:52', '2022-07-06 07:41:52'),
-(278, '7415', 'KG', 'M.8-55 L/ BROWN 1223', 0, 0, 0, 0, 75, 200, NULL, '2022-07-07 04:01:46', '2022-07-07 04:01:46'),
-(280, '7418', 'KG', 'M.8-55 YELLOW 1038', 0, 0, 0, 0, 75, 100, NULL, '2022-07-12 03:43:09', '2022-07-12 03:43:09'),
-(281, '7389', 'KG', 'M.20-65 WHITE 0101 D', 0, 0, 0, 0, 75, 1000, NULL, '2022-07-12 04:10:08', '2022-07-12 04:10:08');
+INSERT INTO `goods` (`id`, `good_name`, `unit`, `description`, `b_price`, `s_price`, `r_price`, `d_price`, `kategori`, `stok`, `foto`, `created_at`, `updated_at`, `co_number`, `grade`, `colour`, `hardness`) VALUES
+(269, '.', 'KG', '.', 0, 0, 0, 0, 75, 0, NULL, '2022-06-30 08:37:18', '2022-06-30 08:37:18', NULL, NULL, NULL, NULL),
+(271, '7420', 'KG', 'M8-57 CREAM 1402', 0, 0, 0, 0, 75, 100, NULL, '2022-07-02 04:13:56', '2022-07-02 04:13:56', NULL, NULL, NULL, NULL),
+(272, '7417', 'KG', 'M.8-60 L/ BROWN 1233', 0, 0, 0, 0, 75, 200, NULL, '2022-07-05 08:06:56', '2022-07-05 08:06:56', NULL, NULL, NULL, NULL),
+(273, '3411 + OIL', 'KG', '3411 + OIL', 0, 0, 0, 0, 59, 100, NULL, '2022-07-06 06:36:17', '2022-07-06 06:36:17', NULL, NULL, NULL, NULL),
+(276, '7401', 'KG', 'TC.260-70 BLACK D', 0, 0, 0, 0, 75, 400, NULL, '2022-07-06 07:34:20', '2022-07-06 07:34:20', NULL, NULL, NULL, NULL),
+(277, '7409', 'KG', 'TC.230 - 70 WHITE 0101 D', 0, 0, 0, 0, 75, 0, NULL, '2022-07-06 07:41:52', '2022-07-06 07:41:52', NULL, NULL, NULL, NULL),
+(278, '7415', 'KG', 'M.8-55 L/ BROWN 1223', 0, 0, 0, 0, 75, 200, NULL, '2022-07-07 04:01:46', '2022-07-07 04:01:46', NULL, NULL, NULL, NULL),
+(280, '7418', 'KG', 'M.8-55 YELLOW 1038', 0, 0, 0, 0, 75, 100, NULL, '2022-07-12 03:43:09', '2022-07-12 03:43:09', NULL, NULL, NULL, NULL),
+(281, '7389', 'KG', 'M.20-65 WHITE 0101 D', 0, 0, 0, 0, 75, 1000, NULL, '2022-07-12 04:10:08', '2022-07-12 04:10:08', NULL, NULL, NULL, NULL),
+(282, 'Contoh', 'KG', 'contoh deskripsi', 0, 0, 0, 0, 60, 0, NULL, '2022-08-27 09:06:05', '2022-08-27 09:06:05', NULL, NULL, NULL, NULL),
+(283, 'contoh2', 'KG', 'contoh2', 0, 0, 0, 0, 61, 0, NULL, '2022-08-27 09:43:09', '2022-08-27 09:43:09', NULL, NULL, NULL, NULL),
+(284, 'contoh3', 'GRAM', 'contoh3', 0, 0, 0, 0, 60, 5, NULL, '2022-08-28 01:43:18', '2022-08-28 01:46:19', NULL, 'ori', 'merah', 'tes'),
+(285, 'contoh4', 'KG', 'contoh 4 bagus', 0, 0, 0, 0, 60, 0, NULL, '2022-08-30 14:06:48', '2022-08-30 14:06:48', 1, 'KW', 'Orange', 'good'),
+(286, 'contoh5', 'GRAM', 'BETUL', 0, 0, 0, 0, 59, 0, NULL, '2022-08-30 14:17:58', '2022-08-30 14:17:58', 2, 'ORI', 'HIJAU', 'CERAH'),
+(287, 'asfa', 'GRAM', 'asd', 0, 0, 0, 0, 66, 0, NULL, '2022-08-30 14:19:55', '2022-08-30 14:19:55', 3, 'asd', 'asd', 'asd'),
+(288, 'contoh6', 'KG', 'cek', 0, 0, 0, 0, 60, 0, NULL, '2022-08-30 14:40:12', '2022-08-30 14:40:12', 4, 'ori', 'biru', 'persib'),
+(289, 'contoh7', 'KG', 'asd', 0, 0, 0, 0, 61, 0, NULL, '2022-08-30 14:47:52', '2022-08-30 14:47:52', 5, 'asd', 'asd', 'asd'),
+(290, 'contoh8', 'GRAM', 'adwe', 0, 0, 0, 0, 71, 0, NULL, '2022-08-30 14:49:48', '2022-08-30 14:49:48', 6, 'asd', 'qwqw', 'adsa'),
+(291, 'contoh9', 'GRAM', 'kaljsd', 0, 0, 0, 0, 66, 0, NULL, '2022-08-30 14:58:13', '2022-08-30 14:58:13', 7, 'asd', 'klk', 'sdkj');
 
 --
--- Trigger `goods`
+-- Triggers `goods`
 --
 DELIMITER $$
 CREATE TRIGGER `goods_after_delete` AFTER DELETE ON `goods` FOR EACH ROW BEGIN
@@ -1631,7 +1645,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jobs`
+-- Table structure for table `jobs`
 --
 
 CREATE TABLE `jobs` (
@@ -1646,7 +1660,7 @@ CREATE TABLE `jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `jobs`
+-- Dumping data for table `jobs`
 --
 
 INSERT INTO `jobs` (`id`, `job_name`, `description`, `price`, `uom`, `comm`, `created_at`, `updated_at`) VALUES
@@ -1739,7 +1753,7 @@ INSERT INTO `jobs` (`id`, `job_name`, `description`, `price`, `uom`, `comm`, `cr
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kasir`
+-- Table structure for table `kasir`
 --
 
 CREATE TABLE `kasir` (
@@ -1751,7 +1765,7 @@ CREATE TABLE `kasir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kasir`
+-- Dumping data for table `kasir`
 --
 
 INSERT INTO `kasir` (`id`, `username`, `password`, `name`, `level`) VALUES
@@ -1760,7 +1774,7 @@ INSERT INTO `kasir` (`id`, `username`, `password`, `name`, `level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `materialcombines`
+-- Table structure for table `materialcombines`
 --
 
 CREATE TABLE `materialcombines` (
@@ -1771,7 +1785,7 @@ CREATE TABLE `materialcombines` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `materialcombines`
+-- Dumping data for table `materialcombines`
 --
 
 INSERT INTO `materialcombines` (`id`, `id_product`, `id_material`, `qty_material`) VALUES
@@ -1888,12 +1902,19 @@ INSERT INTO `materialcombines` (`id`, `id_product`, `id_material`, `qty_material
 (2829, 281, 324, 0.001),
 (2830, 281, 330, 0.000005),
 (2831, 281, 412, 17.1485),
-(2832, 281, 415, 0.025);
+(2832, 281, 415, 0.025),
+(2834, 283, 233, 0.05),
+(2835, 283, 234, 0.05),
+(2836, 282, 237, 0.02),
+(2837, 282, 239, 0.01),
+(2838, 284, 235, 0.03),
+(2839, 284, 238, 0.05),
+(2840, 284, 244, 0.22);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `materialconsume`
+-- Table structure for table `materialconsume`
 --
 
 CREATE TABLE `materialconsume` (
@@ -1906,7 +1927,7 @@ CREATE TABLE `materialconsume` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `materials`
+-- Table structure for table `materials`
 --
 
 CREATE TABLE `materials` (
@@ -1923,22 +1944,22 @@ CREATE TABLE `materials` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `materials`
+-- Dumping data for table `materials`
 --
 
 INSERT INTO `materials` (`id`, `material_name`, `unit`, `description`, `b_price`, `kategori`, `stok`, `stok_2`, `created_at`, `updated_at`) VALUES
-(233, 'TPE LCY 1487', 'KG', 'TPE LCY 1487', 0, 58, '20530.0000', 0, '2022-02-18 08:07:05', '2022-02-18 08:07:05'),
-(234, 'TPE LCY 1485', 'KG', 'TPE LCY 1485', 0, 58, '105135.0000', 0, '2022-02-18 08:07:35', '2022-02-18 08:07:35'),
-(235, 'TPE LCY 1485 (CUCIAN)', 'KG', 'TPE LCY 1485 (CUCIAN)', 0, 58, '150.0000', 0, '2022-02-18 08:08:10', '2022-02-18 08:08:10'),
+(233, 'TPE LCY 1487', 'KG', 'TPE LCY 1487', 0, 58, '20525.0000', 0, '2022-02-18 08:07:05', '2022-08-27 10:00:14'),
+(234, 'TPE LCY 1485', 'KG', 'TPE LCY 1485', 0, 58, '105130.0000', 0, '2022-02-18 08:07:35', '2022-08-27 10:00:14'),
+(235, 'TPE LCY 1485 (CUCIAN)', 'KG', 'TPE LCY 1485 (CUCIAN)', 0, 58, '146.8500', 0, '2022-02-18 08:08:10', '2022-08-28 02:06:27'),
 (236, 'TPE LCY 3546', 'KG', 'TPE LCY 3546', 0, 58, '4720.0000', 0, '2022-02-18 08:08:45', '2022-02-18 08:08:45'),
-(237, 'SEBS 7551', 'KG', 'SEBS 7551', 0, 58, '3528.0000', 0, '2022-02-18 08:09:12', '2022-02-18 08:09:12'),
-(238, 'SIBUR L-7420', 'KG', 'SIBUR L-7420', 0, 58, '11633.0000', 0, '2022-02-18 08:09:46', '2022-02-18 08:09:46'),
-(239, 'PVC RESIN', 'KG', 'PVC RESIN', 0, 58, '2.0000', 0, '2022-02-18 08:22:57', '2022-02-18 08:22:57'),
+(237, 'SEBS 7551', 'KG', 'SEBS 7551', 0, 58, '3526.0000', 0, '2022-02-18 08:09:12', '2022-08-27 15:30:19'),
+(238, 'SIBUR L-7420', 'KG', 'SIBUR L-7420', 0, 58, '11627.7500', 0, '2022-02-18 08:09:46', '2022-08-28 02:06:27'),
+(239, 'PVC RESIN', 'KG', 'PVC RESIN', 0, 58, '1.0000', 0, '2022-02-18 08:22:57', '2022-08-27 15:30:19'),
 (240, 'TPE LCY 1475', 'KG', 'TPE LCY 1475', 0, 58, '22001.5000', 0, '2022-02-18 08:24:16', '2022-02-18 08:24:16'),
 (241, 'TPE LCY 3411', 'KG', 'TPE LCY 3411', 0, 58, '3526.0000', 0, '2022-02-18 08:24:44', '2022-02-18 08:24:44'),
 (242, 'SEBS 7551 + OIL TOPAZ 110 (25/75)', 'KG', 'SEBS 7551 + OIL TOPAZ 110 (25/75)', 0, 59, '48.0000', 0, '2022-02-18 08:25:25', '2022-02-18 08:25:25'),
 (243, 'TPE 3411 + OIL TOPAZ 110 (60/40)', 'KG', 'TPE 3411 + OIL TOPAZ 110 (60/40)', 0, 59, '39.6000', 0, '2022-02-18 08:25:42', '2022-02-18 08:25:42'),
-(244, 'DIBUTHYL PHATALATE (DBP)', 'KG', 'DIBUTHYL PHATALATE (DBP)', 0, 60, '43.0400', 0, '2022-02-18 08:27:10', '2022-02-18 08:27:10'),
+(244, 'DIBUTHYL PHATALATE (DBP)', 'KG', 'DIBUTHYL PHATALATE (DBP)', 0, 60, '19.9400', 0, '2022-02-18 08:27:10', '2022-08-28 02:06:27'),
 (245, 'DIOCTYL PHTHALATE Ex LG (DOP)', 'KG', 'DIOCTYL PHTHALATE Ex LG (DOP)', 0, 60, '19.8800', 0, '2022-02-18 08:27:37', '2022-02-18 08:27:37'),
 (246, 'DOPT', 'KG', 'DOPT', 0, 60, '31.4000', 0, '2022-02-18 08:27:56', '2022-02-18 08:27:56'),
 (247, 'OIL TOPAZ L110', 'KG', 'OIL TOPAZ L110', 0, 60, '29866.4900', 0, '2022-02-18 08:28:17', '2022-02-18 08:28:17'),
@@ -2069,7 +2090,7 @@ INSERT INTO `materials` (`id`, `material_name`, `unit`, `description`, `b_price`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `materialsold_new`
+-- Table structure for table `materialsold_new`
 --
 
 CREATE TABLE `materialsold_new` (
@@ -2086,7 +2107,7 @@ CREATE TABLE `materialsold_new` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `materialsold_new`
+-- Dumping data for table `materialsold_new`
 --
 
 INSERT INTO `materialsold_new` (`id`, `material_name`, `unit`, `description`, `b_price`, `kategori`, `stok`, `stok_2`, `created_at`, `updated_at`) VALUES
@@ -2232,7 +2253,7 @@ INSERT INTO `materialsold_new` (`id`, `material_name`, `unit`, `description`, `b
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `materials_old`
+-- Table structure for table `materials_old`
 --
 
 CREATE TABLE `materials_old` (
@@ -2249,7 +2270,7 @@ CREATE TABLE `materials_old` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `materials_old`
+-- Dumping data for table `materials_old`
 --
 
 INSERT INTO `materials_old` (`id`, `material_name`, `unit`, `description`, `b_price`, `kategori`, `stok`, `stok_2`, `created_at`, `updated_at`) VALUES
@@ -2395,7 +2416,7 @@ INSERT INTO `materials_old` (`id`, `material_name`, `unit`, `description`, `b_pr
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `materialused`
+-- Table structure for table `materialused`
 --
 
 CREATE TABLE `materialused` (
@@ -2409,7 +2430,7 @@ CREATE TABLE `materialused` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `materialused`
+-- Dumping data for table `materialused`
 --
 
 INSERT INTO `materialused` (`id`, `production_number`, `id_product`, `id_material`, `qty_material`, `adjustment`, `persen_adjust`) VALUES
@@ -2944,10 +2965,13 @@ INSERT INTO `materialused` (`id`, `production_number`, `id_product`, `id_materia
 (1016, 'PRD-000069', 281, 282, 30, 0, 0),
 (1017, 'PRD-000069', 281, 285, 5, 0, 0),
 (1018, 'PRD-000069', 281, 324, 1, 0, 0),
-(1019, 'PRD-000069', 281, 330, 0.005, 0, 0);
+(1019, 'PRD-000069', 281, 330, 0.005, 0, 0),
+(1020, 'PRD-000071', 284, 235, 0.15, 0, 0),
+(1021, 'PRD-000071', 284, 238, 0.25, 0, 0),
+(1022, 'PRD-000071', 284, 244, 1.1, 0, 0);
 
 --
--- Trigger `materialused`
+-- Triggers `materialused`
 --
 DELIMITER $$
 CREATE TRIGGER `afterdeletematerial` AFTER DELETE ON `materialused` FOR EACH ROW BEGIN
@@ -2982,7 +3006,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `material_adjustment`
+-- Table structure for table `material_adjustment`
 --
 
 CREATE TABLE `material_adjustment` (
@@ -2995,7 +3019,7 @@ CREATE TABLE `material_adjustment` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `material_adjustment`
+-- Dumping data for table `material_adjustment`
 --
 
 INSERT INTO `material_adjustment` (`id`, `prod_number`, `id_material`, `qty_adjust`, `idbatch`, `persen`) VALUES
@@ -3021,7 +3045,7 @@ INSERT INTO `material_adjustment` (`id`, `prod_number`, `id_material`, `qty_adju
 (23, 'PRD-000068', 412, 0.029595, 130, 15);
 
 --
--- Trigger `material_adjustment`
+-- Triggers `material_adjustment`
 --
 DELIMITER $$
 CREATE TRIGGER `hapus_adjust` AFTER DELETE ON `material_adjustment` FOR EACH ROW BEGIN
@@ -3049,7 +3073,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -3059,7 +3083,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -3100,7 +3124,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `productions`
+-- Table structure for table `productions`
 --
 
 CREATE TABLE `productions` (
@@ -3120,7 +3144,7 @@ CREATE TABLE `productions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `productions`
+-- Dumping data for table `productions`
 --
 
 INSERT INTO `productions` (`id`, `production_number`, `description`, `user_id`, `total`, `status`, `batch`, `created_at`, `updated_at`, `id_customer`, `grade`, `colour`, `hardness`) VALUES
@@ -3130,12 +3154,13 @@ INSERT INTO `productions` (`id`, `production_number`, `description`, `user_id`, 
 (66, 'PRD-000063', '7401', '23', 0, 0, 1, '2022-07-12 03:10:33', '2022-07-12 03:10:33', 1258, 'TC.260', 'BLACK D', '70'),
 (67, 'PRD-000001', '7420', '23', 0, 0, 1, '2022-07-12 03:13:24', '2022-07-12 03:13:24', 1256, 'M.8', 'CREAM 1402', '57'),
 (68, 'PRD-000068', '7418', '23', 0, 0, 1, '2022-07-12 03:45:41', '2022-07-12 03:45:41', 1258, 'M.8', 'YELLOW 1038', '55'),
-(70, 'PRD-000069', '7389', '23', 0, 0, 1, '2022-07-12 04:22:47', '2022-07-12 04:22:47', 1258, 'M.20', 'WHITE 0101 D', '65');
+(70, 'PRD-000069', '7389', '23', 0, 0, 1, '2022-07-12 04:22:47', '2022-07-12 04:22:47', 1258, 'M.20', 'WHITE 0101 D', '65'),
+(71, 'PRD-000071', 'contoh3', '23', 15000, 0, 1, '2022-08-28 02:07:15', '2022-08-28 02:07:15', 1252, 'ori', 'merah', 'tes');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `production_batch`
+-- Table structure for table `production_batch`
 --
 
 CREATE TABLE `production_batch` (
@@ -3153,7 +3178,7 @@ CREATE TABLE `production_batch` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `production_batch`
+-- Dumping data for table `production_batch`
 --
 
 INSERT INTO `production_batch` (`id`, `production_number`, `item_cd`, `quantity`, `item_unit`, `item_price`, `item_total`, `created_at`, `updated_at`, `batch`, `antrian`) VALUES
@@ -3177,12 +3202,13 @@ INSERT INTO `production_batch` (`id`, `production_number`, `item_cd`, `quantity`
 (147, 'PRD-000069', 281, 100, 'KG', 0, 0, '2022-07-12 04:22:47', NULL, 1, 23),
 (148, 'PRD-000069', 281, 100, 'KG', 0, 0, '2022-07-12 04:22:47', NULL, 1, 24),
 (149, 'PRD-000069', 281, 100, 'KG', 0, 0, '2022-07-12 04:22:47', NULL, 1, 25),
-(150, 'PRD-000069', 281, 100, 'KG', 0, 0, '2022-07-12 04:22:48', NULL, 1, 26);
+(150, 'PRD-000069', 281, 100, 'KG', 0, 0, '2022-07-12 04:22:48', NULL, 1, 26),
+(151, 'PRD-000071', 284, 5, 'GRAM', 3000, 15000, '2022-08-28 02:07:15', NULL, 1, 27);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `production_details`
+-- Table structure for table `production_details`
 --
 
 CREATE TABLE `production_details` (
@@ -3198,7 +3224,7 @@ CREATE TABLE `production_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `production_details`
+-- Dumping data for table `production_details`
 --
 
 INSERT INTO `production_details` (`id`, `production_number`, `item_cd`, `quantity`, `item_unit`, `item_price`, `item_total`, `created_at`, `updated_at`) VALUES
@@ -3208,10 +3234,11 @@ INSERT INTO `production_details` (`id`, `production_number`, `item_cd`, `quantit
 (64, 'PRD-000063', 276, 400, 'KG', 0, 0, '2022-07-12 03:10:33', NULL),
 (65, 'PRD-000001', 271, 100, 'KG', 0, 0, '2022-07-12 03:13:25', NULL),
 (66, 'PRD-000068', 280, 100, 'KG', 0, 0, '2022-07-12 03:45:41', NULL),
-(68, 'PRD-000069', 281, 1000, 'KG', 0, 0, '2022-07-12 04:22:47', NULL);
+(68, 'PRD-000069', 281, 1000, 'KG', 0, 0, '2022-07-12 04:22:47', NULL),
+(69, 'PRD-000071', 284, 5, 'GRAM', 3000, 15000, '2022-08-28 02:07:15', NULL);
 
 --
--- Trigger `production_details`
+-- Triggers `production_details`
 --
 DELIMITER $$
 CREATE TRIGGER `afterdeleteproduction` AFTER DELETE ON `production_details` FOR EACH ROW BEGIN
@@ -3233,7 +3260,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `production_tmp`
+-- Table structure for table `production_tmp`
 --
 
 CREATE TABLE `production_tmp` (
@@ -3250,7 +3277,7 @@ CREATE TABLE `production_tmp` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `profils`
+-- Table structure for table `profils`
 --
 
 CREATE TABLE `profils` (
@@ -3270,7 +3297,7 @@ CREATE TABLE `profils` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `profils`
+-- Dumping data for table `profils`
 --
 
 INSERT INTO `profils` (`id`, `company_name`, `company_address`, `company_title`, `owner_name`, `owner_phone`, `fax`, `email`, `bank`, `kcp`, `norek`, `created_at`, `updated_at`) VALUES
@@ -3279,7 +3306,7 @@ INSERT INTO `profils` (`id`, `company_name`, `company_address`, `company_title`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `purchases`
+-- Table structure for table `purchases`
 --
 
 CREATE TABLE `purchases` (
@@ -3301,7 +3328,7 @@ CREATE TABLE `purchases` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `purchases`
+-- Dumping data for table `purchases`
 --
 
 INSERT INTO `purchases` (`id`, `invoice`, `supplier_id`, `description`, `user_id`, `total`, `status`, `tipe`, `pembayaran`, `sisa`, `dp`, `due`, `hari`, `created_at`, `updated_at`) VALUES
@@ -3347,7 +3374,7 @@ INSERT INTO `purchases` (`id`, `invoice`, `supplier_id`, `description`, `user_id
 (183, 'PCH-000183', 45, '3411 + OIL 110', '23', 0, 0, 1, 0, 0, 0, NULL, NULL, '2022-07-06 06:39:05', '2022-07-06 06:39:05');
 
 --
--- Trigger `purchases`
+-- Triggers `purchases`
 --
 DELIMITER $$
 CREATE TRIGGER `purchases_delete_kas` AFTER DELETE ON `purchases` FOR EACH ROW BEGIN
@@ -3371,7 +3398,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `purchase_details`
+-- Table structure for table `purchase_details`
 --
 
 CREATE TABLE `purchase_details` (
@@ -3388,7 +3415,7 @@ CREATE TABLE `purchase_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `purchase_details`
+-- Dumping data for table `purchase_details`
 --
 
 INSERT INTO `purchase_details` (`id`, `invoice`, `item_cd`, `quantity`, `item_unit`, `item_price`, `item_total`, `created_at`, `updated_at`, `qty_received`) VALUES
@@ -3512,7 +3539,7 @@ INSERT INTO `purchase_details` (`id`, `invoice`, `item_cd`, `quantity`, `item_un
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `purchase_tmp`
+-- Table structure for table `purchase_tmp`
 --
 
 CREATE TABLE `purchase_tmp` (
@@ -3529,7 +3556,7 @@ CREATE TABLE `purchase_tmp` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `quotes`
+-- Table structure for table `quotes`
 --
 
 CREATE TABLE `quotes` (
@@ -3548,7 +3575,7 @@ CREATE TABLE `quotes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `quotes`
+-- Dumping data for table `quotes`
 --
 
 INSERT INTO `quotes` (`id`, `quote_no`, `customer`, `attn`, `email`, `fax`, `dari`, `ref`, `ref2`, `total`, `created_at`, `updated_at`) VALUES
@@ -3604,7 +3631,7 @@ INSERT INTO `quotes` (`id`, `quote_no`, `customer`, `attn`, `email`, `fax`, `dar
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `quote_item`
+-- Table structure for table `quote_item`
 --
 
 CREATE TABLE `quote_item` (
@@ -3620,7 +3647,7 @@ CREATE TABLE `quote_item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `quote_item`
+-- Dumping data for table `quote_item`
 --
 
 INSERT INTO `quote_item` (`id`, `quote_no`, `description`, `quantity`, `uom`, `price`, `total`, `created_at`, `updated_at`) VALUES
@@ -3712,7 +3739,7 @@ INSERT INTO `quote_item` (`id`, `quote_no`, `description`, `quantity`, `uom`, `p
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `quote_tmp`
+-- Table structure for table `quote_tmp`
 --
 
 CREATE TABLE `quote_tmp` (
@@ -3729,7 +3756,7 @@ CREATE TABLE `quote_tmp` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `retur`
+-- Table structure for table `retur`
 --
 
 CREATE TABLE `retur` (
@@ -3745,7 +3772,7 @@ CREATE TABLE `retur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `retur`
+-- Dumping data for table `retur`
 --
 
 INSERT INTO `retur` (`id`, `invoice`, `cust_id`, `user_id`, `note`, `total`, `status`, `created_at`, `updated_at`) VALUES
@@ -3753,7 +3780,7 @@ INSERT INTO `retur` (`id`, `invoice`, `cust_id`, `user_id`, `note`, `total`, `st
 (6, 'RT-000006', 42, 2, 'salah', 3220000, 0, '2020-01-26 17:00:00', '2020-01-26 17:00:00');
 
 --
--- Trigger `retur`
+-- Triggers `retur`
 --
 DELIMITER $$
 CREATE TRIGGER `decrease_sales` AFTER INSERT ON `retur` FOR EACH ROW BEGIN 
@@ -3779,7 +3806,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `retur_item`
+-- Table structure for table `retur_item`
 --
 
 CREATE TABLE `retur_item` (
@@ -3796,7 +3823,7 @@ CREATE TABLE `retur_item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `retur_item`
+-- Dumping data for table `retur_item`
 --
 
 INSERT INTO `retur_item` (`id`, `invoice`, `kategori`, `item_cd`, `uom`, `quantity`, `price`, `total`, `created_at`, `updated_at`) VALUES
@@ -3806,7 +3833,7 @@ INSERT INTO `retur_item` (`id`, `invoice`, `kategori`, `item_cd`, `uom`, `quanti
 (9, 'RT-000006', 2, 14, 'SET', 1, 720000, 720000, '2020-01-26 17:00:00', '2020-01-26 17:00:00');
 
 --
--- Trigger `retur_item`
+-- Triggers `retur_item`
 --
 DELIMITER $$
 CREATE TRIGGER `retur_process` AFTER INSERT ON `retur_item` FOR EACH ROW BEGIN 
@@ -3820,7 +3847,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `retur_tmp`
+-- Table structure for table `retur_tmp`
 --
 
 CREATE TABLE `retur_tmp` (
@@ -3839,7 +3866,7 @@ CREATE TABLE `retur_tmp` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sales`
+-- Table structure for table `sales`
 --
 
 CREATE TABLE `sales` (
@@ -3860,7 +3887,7 @@ CREATE TABLE `sales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `sales`
+-- Dumping data for table `sales`
 --
 
 INSERT INTO `sales` (`id`, `invoice`, `cust_id`, `user_id`, `tipe`, `note`, `total`, `dp`, `pembayaran`, `sisa`, `status`, `due`, `created_at`, `updated_at`) VALUES
@@ -3874,7 +3901,7 @@ INSERT INTO `sales` (`id`, `invoice`, `cust_id`, `user_id`, `tipe`, `note`, `tot
 (11, 'SL-000010', 1247, 2, 1, 'M50-65-BLUE', 0, NULL, 0, 0, 1, NULL, '2021-12-10 17:00:00', '2021-12-10 17:00:00');
 
 --
--- Trigger `sales`
+-- Triggers `sales`
 --
 DELIMITER $$
 CREATE TRIGGER `sales_after_delete_kas` AFTER DELETE ON `sales` FOR EACH ROW BEGIN
@@ -3897,7 +3924,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `salespay`
+-- Table structure for table `salespay`
 --
 
 CREATE TABLE `salespay` (
@@ -3914,7 +3941,7 @@ CREATE TABLE `salespay` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Trigger `salespay`
+-- Triggers `salespay`
 --
 DELIMITER $$
 CREATE TRIGGER `salespay_in` AFTER INSERT ON `salespay` FOR EACH ROW BEGIN 
@@ -3949,7 +3976,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sales_item`
+-- Table structure for table `sales_item`
 --
 
 CREATE TABLE `sales_item` (
@@ -3966,7 +3993,7 @@ CREATE TABLE `sales_item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `sales_item`
+-- Dumping data for table `sales_item`
 --
 
 INSERT INTO `sales_item` (`id`, `invoice`, `kategori`, `item_cd`, `uom`, `quantity`, `price`, `total`, `created_at`, `updated_at`) VALUES
@@ -3983,7 +4010,7 @@ INSERT INTO `sales_item` (`id`, `invoice`, `kategori`, `item_cd`, `uom`, `quanti
 (13, 'SL-000010', 2, 23, 'KG', 300, 0, 0, '2021-12-10 17:00:00', '2021-12-10 17:00:00');
 
 --
--- Trigger `sales_item`
+-- Triggers `sales_item`
 --
 DELIMITER $$
 CREATE TRIGGER `sales_process` AFTER INSERT ON `sales_item` FOR EACH ROW BEGIN 
@@ -4003,7 +4030,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sales_tmp`
+-- Table structure for table `sales_tmp`
 --
 
 CREATE TABLE `sales_tmp` (
@@ -4022,7 +4049,7 @@ CREATE TABLE `sales_tmp` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `services`
+-- Table structure for table `services`
 --
 
 CREATE TABLE `services` (
@@ -4046,7 +4073,7 @@ CREATE TABLE `services` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `services`
+-- Dumping data for table `services`
 --
 
 INSERT INTO `services` (`id`, `invoice`, `ttno`, `cust_id`, `tech_id`, `note`, `fak_no`, `do_no`, `po_no`, `total`, `dp`, `pembayaran`, `sisa`, `status`, `created_at`, `updated_at`, `direct`) VALUES
@@ -4083,7 +4110,7 @@ INSERT INTO `services` (`id`, `invoice`, `ttno`, `cust_id`, `tech_id`, `note`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `service_item_good`
+-- Table structure for table `service_item_good`
 --
 
 CREATE TABLE `service_item_good` (
@@ -4101,7 +4128,7 @@ CREATE TABLE `service_item_good` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `service_item_good`
+-- Dumping data for table `service_item_good`
 --
 
 INSERT INTO `service_item_good` (`id`, `invoice`, `kategori`, `item_cd`, `item_name`, `uom`, `quantity`, `price`, `total`, `created_at`, `updated_at`) VALUES
@@ -4162,7 +4189,7 @@ INSERT INTO `service_item_good` (`id`, `invoice`, `kategori`, `item_cd`, `item_n
 (59, 'SV-000030', 2, 26, 'BANGKU MESIN KANAN L300 D', 'PCS', 1, 420000, 420000, '2020-03-04 17:00:00', NULL);
 
 --
--- Trigger `service_item_good`
+-- Triggers `service_item_good`
 --
 DELIMITER $$
 CREATE TRIGGER `sales_deleted` AFTER DELETE ON `service_item_good` FOR EACH ROW BEGIN 
@@ -4182,7 +4209,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `service_item_job`
+-- Table structure for table `service_item_job`
 --
 
 CREATE TABLE `service_item_job` (
@@ -4200,7 +4227,7 @@ CREATE TABLE `service_item_job` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `service_item_job`
+-- Dumping data for table `service_item_job`
 --
 
 INSERT INTO `service_item_job` (`id`, `invoice`, `kategori`, `item_cd`, `item_name`, `uom`, `quantity`, `price`, `total`, `created_at`, `updated_at`) VALUES
@@ -4241,7 +4268,7 @@ INSERT INTO `service_item_job` (`id`, `invoice`, `kategori`, `item_cd`, `item_na
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `service_tmp`
+-- Table structure for table `service_tmp`
 --
 
 CREATE TABLE `service_tmp` (
@@ -4260,7 +4287,7 @@ CREATE TABLE `service_tmp` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `setting_stok`
+-- Table structure for table `setting_stok`
 --
 
 CREATE TABLE `setting_stok` (
@@ -4269,7 +4296,7 @@ CREATE TABLE `setting_stok` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `setting_stok`
+-- Dumping data for table `setting_stok`
 --
 
 INSERT INTO `setting_stok` (`manage`, `unmanaged`) VALUES
@@ -4278,7 +4305,7 @@ INSERT INTO `setting_stok` (`manage`, `unmanaged`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `stocks`
+-- Table structure for table `stocks`
 --
 
 CREATE TABLE `stocks` (
@@ -4293,7 +4320,7 @@ CREATE TABLE `stocks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `stocks`
+-- Dumping data for table `stocks`
 --
 
 INSERT INTO `stocks` (`id`, `id_good`, `type`, `document`, `in`, `out`, `created_at`, `updated_at`) VALUES
@@ -4413,12 +4440,13 @@ INSERT INTO `stocks` (`id`, `id_good`, `type`, `document`, `in`, `out`, `created
 (501, 276, 'production', 'PRD-000063', 400, 0, '2022-07-12 03:10:33', NULL),
 (502, 271, 'production', 'PRD-000001', 100, 0, '2022-07-12 03:13:25', NULL),
 (503, 280, 'production', 'PRD-000068', 100, 0, '2022-07-12 03:45:41', NULL),
-(505, 281, 'production', 'PRD-000069', 1000, 0, '2022-07-12 04:22:47', NULL);
+(505, 281, 'production', 'PRD-000069', 1000, 0, '2022-07-12 04:22:47', NULL),
+(506, 284, 'production', 'PRD-000071', 5, 0, '2022-08-28 02:07:15', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `suppliers`
+-- Table structure for table `suppliers`
 --
 
 CREATE TABLE `suppliers` (
@@ -4435,7 +4463,7 @@ CREATE TABLE `suppliers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `suppliers`
+-- Dumping data for table `suppliers`
 --
 
 INSERT INTO `suppliers` (`id`, `supplier_name`, `supplier_contact`, `supplier_address`, `supplier_city`, `supplier_phone`, `supplier_email`, `supplier_fax`, `created_at`, `updated_at`) VALUES
@@ -4457,7 +4485,7 @@ INSERT INTO `suppliers` (`id`, `supplier_name`, `supplier_contact`, `supplier_ad
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tanda_terima`
+-- Table structure for table `tanda_terima`
 --
 
 CREATE TABLE `tanda_terima` (
@@ -4479,7 +4507,7 @@ CREATE TABLE `tanda_terima` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `tanda_terima`
+-- Dumping data for table `tanda_terima`
 --
 
 INSERT INTO `tanda_terima` (`id`, `ttno`, `cust_id`, `item_name`, `tipe`, `sn`, `keterangan`, `keluhan`, `kelengkapan`, `estimasi_selesai`, `dp`, `status`, `foto`, `created_at`, `updated_at`) VALUES
@@ -4526,7 +4554,7 @@ INSERT INTO `tanda_terima` (`id`, `ttno`, `cust_id`, `item_name`, `tipe`, `sn`, 
 (47, 'RN-000047', 68, 'block kroas', 'avanza', 'avanza', 'rusak', 'rusak', 'block kroas', 3, 0, 2, NULL, '2020-03-16 03:57:30', NULL);
 
 --
--- Trigger `tanda_terima`
+-- Triggers `tanda_terima`
 --
 DELIMITER $$
 CREATE TRIGGER `tanda_terima_after_delete_kas` AFTER DELETE ON `tanda_terima` FOR EACH ROW BEGIN
@@ -4555,7 +4583,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `teknisi`
+-- Table structure for table `teknisi`
 --
 
 CREATE TABLE `teknisi` (
@@ -4574,7 +4602,7 @@ CREATE TABLE `teknisi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `teknisi`
+-- Dumping data for table `teknisi`
 --
 
 INSERT INTO `teknisi` (`id`, `nama`, `alamat`, `jenis_kelamin`, `tgl_lahir`, `hp`, `no_ktp`, `password`, `foto`, `token`, `created_at`, `updated_at`) VALUES
@@ -4585,7 +4613,7 @@ INSERT INTO `teknisi` (`id`, `nama`, `alamat`, `jenis_kelamin`, `tgl_lahir`, `hp
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `token`
+-- Table structure for table `token`
 --
 
 CREATE TABLE `token` (
@@ -4594,7 +4622,7 @@ CREATE TABLE `token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `token`
+-- Dumping data for table `token`
 --
 
 INSERT INTO `token` (`id`, `token`) VALUES
@@ -4604,7 +4632,7 @@ INSERT INTO `token` (`id`, `token`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `units`
+-- Table structure for table `units`
 --
 
 CREATE TABLE `units` (
@@ -4615,7 +4643,7 @@ CREATE TABLE `units` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `units`
+-- Dumping data for table `units`
 --
 
 INSERT INTO `units` (`id`, `unit`, `created_at`, `updated_at`) VALUES
@@ -4626,7 +4654,7 @@ INSERT INTO `units` (`id`, `unit`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -4635,13 +4663,13 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `level` enum('ADMIN','BARANG','JASA','GUEST') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `level` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `level`, `created_at`, `updated_at`) VALUES
@@ -4653,624 +4681,630 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `level
 (14, 'Riko', 'riko@gmail.com', '$2y$10$jVryF3DjE2NEGdVG8ACtVO0vSgSCFW/blQfCxQ/LBICvTOIoMQ6uK', 'QXhksPHFR9VpigZIzcMXMro9YOJ3sEELafD8M29EqkAV1JeZ213MYGQJduDI', 'BARANG', '2020-01-23 09:16:41', '2020-01-23 09:16:41'),
 (15, 'jajang', 'jajang@gmail.com', '$2y$10$I0soy.xBkAghHlgQjUikD.QDtQod/dkv6V0d6N5TlKSS17.zXwJse', NULL, 'BARANG', '2020-01-23 09:17:05', '2020-01-23 09:17:05'),
 (16, 'Apeh', 'apeh@gmail.com', '$2y$10$9ywoHNyPi5DtsTWZ3nHB2O7bMzC0Su3ql1hcg67BjYcU.PDgHr9.y', NULL, 'ADMIN', '2020-01-23 09:17:52', '2020-01-23 09:17:52'),
-(23, 'Fiorensza sallyna', 'Fiorenszasallyna@gmail.com', '$2y$10$K1Fgp218eOoGQ/Yju35IVuAx2wh1QsqQnH0KfStMSLxt4F0GW6tRu', 'xeFJG1OcXNLNhOQ23Yy4bKaEzVlpojj6iv6zKvynvJMIMrJqPPWTDvZwNfxg', 'ADMIN', '2022-02-11 11:08:13', '2022-02-11 11:08:13');
+(23, 'Fiorensza sallyna', 'Fiorenszasallyna@gmail.com', '$2y$10$K1Fgp218eOoGQ/Yju35IVuAx2wh1QsqQnH0KfStMSLxt4F0GW6tRu', 'r55nz9teqHu4q9e5bQwlY9Drn765xdK98bGu9FPLcS2I17HIK3d1JAc86gI9', 'ADMIN', '2022-02-11 11:08:13', '2022-02-11 11:08:13'),
+(24, 'tes', 'tes@gmail.com', '$2y$10$zQIphoELwWRMfhhhVE2GluYGgrxORlTZTCak/TCwFZ953xkxVUEsS', 'u1ymkVS2kz7NZavuvVfo94ZGIcWc5OzEdpFiXbFiZimaDvLHMJR7B3x6EDxP', 'ADMIN', '2022-08-28 02:34:56', '2022-08-28 02:34:56'),
+(25, 'tes1', 'tes1@gmail.com', '$2y$10$unEKTf08vraGKbyoblxkgeC60U.EWI9l5X5ucYewGL6NyCFH15G1e', 'denPZanDLw3fT9rHamuWE02DMdln48mJKAyqvkK8KQepUGb8KTncvUA1uDix', 'OPERATOR', '2022-08-28 02:58:24', '2022-08-28 02:58:24'),
+(26, 'kepala produksi', 'kp@gmail.com', '$2y$10$u.N4v6w9u4JkhMh4dpyoeu1tHcnR9oFe1OJn5Nrq44yZo3YDhFqzO', NULL, 'KEPALA PRODUKSI', '2022-08-28 03:24:46', '2022-08-28 03:24:46'),
+(27, 'admin bahan baku', 'abb@gmail.com', '$2y$10$GAbYZfGsJwXWN26KrhW0Xe95Q.n2dYvk0oeaZRXyiUmbw6cZC0a3m', NULL, 'ADMIN BAHAN BAKU', '2022-08-28 03:25:12', '2022-08-28 03:25:12'),
+(28, 'admin produksi', 'ap@gmail.com', '$2y$10$cBiQb.B081PgAGAguxjcc.quZEgY3Y8R0YzZ4qmSmaFvCAYyhkNYy', NULL, 'ADMIN PRODUKSI', '2022-08-28 03:25:45', '2022-08-28 03:25:45'),
+(29, 'staff produksi', 'sp@gmail.com', '$2y$10$aJdu7xz0LOw2BkCsgCwSq.TG5a/M8fDj2256BnKAE4d4dE6v.OJwa', NULL, 'STAFF PRODUKSI', '2022-08-28 03:26:11', '2022-08-28 03:26:11');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `antrian`
+-- Indexes for table `antrian`
 --
 ALTER TABLE `antrian`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `cashes`
+-- Indexes for table `cashes`
 --
 ALTER TABLE `cashes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `cash_flows`
+-- Indexes for table `cash_flows`
 --
 ALTER TABLE `cash_flows`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `costs`
+-- Indexes for table `costs`
 --
 ALTER TABLE `costs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `customers`
+-- Indexes for table `customers`
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `custpays`
+-- Indexes for table `custpays`
 --
 ALTER TABLE `custpays`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `debts`
+-- Indexes for table `debts`
 --
 ALTER TABLE `debts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `expenses`
+-- Indexes for table `expenses`
 --
 ALTER TABLE `expenses`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `goodreceipt`
+-- Indexes for table `goodreceipt`
 --
 ALTER TABLE `goodreceipt`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `goodreceipt_details`
+-- Indexes for table `goodreceipt_details`
 --
 ALTER TABLE `goodreceipt_details`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `goods`
+-- Indexes for table `goods`
 --
 ALTER TABLE `goods`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `jobs`
+-- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kasir`
+-- Indexes for table `kasir`
 --
 ALTER TABLE `kasir`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `materialcombines`
+-- Indexes for table `materialcombines`
 --
 ALTER TABLE `materialcombines`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_product` (`id_product`);
 
 --
--- Indeks untuk tabel `materialconsume`
+-- Indexes for table `materialconsume`
 --
 ALTER TABLE `materialconsume`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `materials`
+-- Indexes for table `materials`
 --
 ALTER TABLE `materials`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `materialsold_new`
+-- Indexes for table `materialsold_new`
 --
 ALTER TABLE `materialsold_new`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `materials_old`
+-- Indexes for table `materials_old`
 --
 ALTER TABLE `materials_old`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `materialused`
+-- Indexes for table `materialused`
 --
 ALTER TABLE `materialused`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `material_adjustment`
+-- Indexes for table `material_adjustment`
 --
 ALTER TABLE `material_adjustment`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `productions`
+-- Indexes for table `productions`
 --
 ALTER TABLE `productions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `production_batch`
+-- Indexes for table `production_batch`
 --
 ALTER TABLE `production_batch`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `production_details`
+-- Indexes for table `production_details`
 --
 ALTER TABLE `production_details`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `production_tmp`
+-- Indexes for table `production_tmp`
 --
 ALTER TABLE `production_tmp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `profils`
+-- Indexes for table `profils`
 --
 ALTER TABLE `profils`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `purchases`
+-- Indexes for table `purchases`
 --
 ALTER TABLE `purchases`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `purchase_details`
+-- Indexes for table `purchase_details`
 --
 ALTER TABLE `purchase_details`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `purchase_tmp`
+-- Indexes for table `purchase_tmp`
 --
 ALTER TABLE `purchase_tmp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `quotes`
+-- Indexes for table `quotes`
 --
 ALTER TABLE `quotes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `quote_item`
+-- Indexes for table `quote_item`
 --
 ALTER TABLE `quote_item`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `quote_tmp`
+-- Indexes for table `quote_tmp`
 --
 ALTER TABLE `quote_tmp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `retur`
+-- Indexes for table `retur`
 --
 ALTER TABLE `retur`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `retur_item`
+-- Indexes for table `retur_item`
 --
 ALTER TABLE `retur_item`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `retur_tmp`
+-- Indexes for table `retur_tmp`
 --
 ALTER TABLE `retur_tmp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `sales`
+-- Indexes for table `sales`
 --
 ALTER TABLE `sales`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `salespay`
+-- Indexes for table `salespay`
 --
 ALTER TABLE `salespay`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `sales_item`
+-- Indexes for table `sales_item`
 --
 ALTER TABLE `sales_item`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `sales_tmp`
+-- Indexes for table `sales_tmp`
 --
 ALTER TABLE `sales_tmp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `services`
+-- Indexes for table `services`
 --
 ALTER TABLE `services`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `service_item_good`
+-- Indexes for table `service_item_good`
 --
 ALTER TABLE `service_item_good`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `service_item_job`
+-- Indexes for table `service_item_job`
 --
 ALTER TABLE `service_item_job`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `service_tmp`
+-- Indexes for table `service_tmp`
 --
 ALTER TABLE `service_tmp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `stocks`
+-- Indexes for table `stocks`
 --
 ALTER TABLE `stocks`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `suppliers`
+-- Indexes for table `suppliers`
 --
 ALTER TABLE `suppliers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tanda_terima`
+-- Indexes for table `tanda_terima`
 --
 ALTER TABLE `tanda_terima`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `teknisi`
+-- Indexes for table `teknisi`
 --
 ALTER TABLE `teknisi`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `hp` (`hp`);
 
 --
--- Indeks untuk tabel `units`
+-- Indexes for table `units`
 --
 ALTER TABLE `units`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `antrian`
+-- AUTO_INCREMENT for table `antrian`
 --
 ALTER TABLE `antrian`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `cashes`
+-- AUTO_INCREMENT for table `cashes`
 --
 ALTER TABLE `cashes`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=496;
 
 --
--- AUTO_INCREMENT untuk tabel `cash_flows`
+-- AUTO_INCREMENT for table `cash_flows`
 --
 ALTER TABLE `cash_flows`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=857;
 
 --
--- AUTO_INCREMENT untuk tabel `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
--- AUTO_INCREMENT untuk tabel `costs`
+-- AUTO_INCREMENT for table `costs`
 --
 ALTER TABLE `costs`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `customers`
+-- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1260;
 
 --
--- AUTO_INCREMENT untuk tabel `custpays`
+-- AUTO_INCREMENT for table `custpays`
 --
 ALTER TABLE `custpays`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `debts`
+-- AUTO_INCREMENT for table `debts`
 --
 ALTER TABLE `debts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `expenses`
+-- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `goodreceipt`
+-- AUTO_INCREMENT for table `goodreceipt`
 --
 ALTER TABLE `goodreceipt`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
--- AUTO_INCREMENT untuk tabel `goodreceipt_details`
+-- AUTO_INCREMENT for table `goodreceipt_details`
 --
 ALTER TABLE `goodreceipt_details`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=446;
 
 --
--- AUTO_INCREMENT untuk tabel `goods`
+-- AUTO_INCREMENT for table `goods`
 --
 ALTER TABLE `goods`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=282;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=292;
 
 --
--- AUTO_INCREMENT untuk tabel `jobs`
+-- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 
 --
--- AUTO_INCREMENT untuk tabel `kasir`
+-- AUTO_INCREMENT for table `kasir`
 --
 ALTER TABLE `kasir`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `materialcombines`
+-- AUTO_INCREMENT for table `materialcombines`
 --
 ALTER TABLE `materialcombines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2833;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2841;
 
 --
--- AUTO_INCREMENT untuk tabel `materialconsume`
+-- AUTO_INCREMENT for table `materialconsume`
 --
 ALTER TABLE `materialconsume`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1465;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1489;
 
 --
--- AUTO_INCREMENT untuk tabel `materials`
+-- AUTO_INCREMENT for table `materials`
 --
 ALTER TABLE `materials`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=431;
 
 --
--- AUTO_INCREMENT untuk tabel `materialsold_new`
+-- AUTO_INCREMENT for table `materialsold_new`
 --
 ALTER TABLE `materialsold_new`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=431;
 
 --
--- AUTO_INCREMENT untuk tabel `materials_old`
+-- AUTO_INCREMENT for table `materials_old`
 --
 ALTER TABLE `materials_old`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=431;
 
 --
--- AUTO_INCREMENT untuk tabel `materialused`
+-- AUTO_INCREMENT for table `materialused`
 --
 ALTER TABLE `materialused`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1020;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1023;
 
 --
--- AUTO_INCREMENT untuk tabel `material_adjustment`
+-- AUTO_INCREMENT for table `material_adjustment`
 --
 ALTER TABLE `material_adjustment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT untuk tabel `productions`
+-- AUTO_INCREMENT for table `productions`
 --
 ALTER TABLE `productions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
--- AUTO_INCREMENT untuk tabel `production_batch`
+-- AUTO_INCREMENT for table `production_batch`
 --
 ALTER TABLE `production_batch`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
--- AUTO_INCREMENT untuk tabel `production_details`
+-- AUTO_INCREMENT for table `production_details`
 --
 ALTER TABLE `production_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
--- AUTO_INCREMENT untuk tabel `production_tmp`
+-- AUTO_INCREMENT for table `production_tmp`
 --
 ALTER TABLE `production_tmp`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `profils`
+-- AUTO_INCREMENT for table `profils`
 --
 ALTER TABLE `profils`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `purchases`
+-- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
 
 --
--- AUTO_INCREMENT untuk tabel `purchase_details`
+-- AUTO_INCREMENT for table `purchase_details`
 --
 ALTER TABLE `purchase_details`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=486;
 
 --
--- AUTO_INCREMENT untuk tabel `purchase_tmp`
+-- AUTO_INCREMENT for table `purchase_tmp`
 --
 ALTER TABLE `purchase_tmp`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=735;
 
 --
--- AUTO_INCREMENT untuk tabel `quotes`
+-- AUTO_INCREMENT for table `quotes`
 --
 ALTER TABLE `quotes`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
--- AUTO_INCREMENT untuk tabel `quote_item`
+-- AUTO_INCREMENT for table `quote_item`
 --
 ALTER TABLE `quote_item`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
--- AUTO_INCREMENT untuk tabel `quote_tmp`
+-- AUTO_INCREMENT for table `quote_tmp`
 --
 ALTER TABLE `quote_tmp`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `retur`
+-- AUTO_INCREMENT for table `retur`
 --
 ALTER TABLE `retur`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `retur_item`
+-- AUTO_INCREMENT for table `retur_item`
 --
 ALTER TABLE `retur_item`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `retur_tmp`
+-- AUTO_INCREMENT for table `retur_tmp`
 --
 ALTER TABLE `retur_tmp`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `sales`
+-- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `salespay`
+-- AUTO_INCREMENT for table `salespay`
 --
 ALTER TABLE `salespay`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `sales_item`
+-- AUTO_INCREMENT for table `sales_item`
 --
 ALTER TABLE `sales_item`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `sales_tmp`
+-- AUTO_INCREMENT for table `sales_tmp`
 --
 ALTER TABLE `sales_tmp`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `services`
+-- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT untuk tabel `service_item_good`
+-- AUTO_INCREMENT for table `service_item_good`
 --
 ALTER TABLE `service_item_good`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
--- AUTO_INCREMENT untuk tabel `service_item_job`
+-- AUTO_INCREMENT for table `service_item_job`
 --
 ALTER TABLE `service_item_job`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT untuk tabel `service_tmp`
+-- AUTO_INCREMENT for table `service_tmp`
 --
 ALTER TABLE `service_tmp`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `stocks`
+-- AUTO_INCREMENT for table `stocks`
 --
 ALTER TABLE `stocks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=506;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=507;
 
 --
--- AUTO_INCREMENT untuk tabel `suppliers`
+-- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT untuk tabel `tanda_terima`
+-- AUTO_INCREMENT for table `tanda_terima`
 --
 ALTER TABLE `tanda_terima`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
--- AUTO_INCREMENT untuk tabel `teknisi`
+-- AUTO_INCREMENT for table `teknisi`
 --
 ALTER TABLE `teknisi`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
--- AUTO_INCREMENT untuk tabel `units`
+-- AUTO_INCREMENT for table `units`
 --
 ALTER TABLE `units`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `materialcombines`
+-- Constraints for table `materialcombines`
 --
 ALTER TABLE `materialcombines`
   ADD CONSTRAINT `materialcombines_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `goods` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

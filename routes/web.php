@@ -45,6 +45,7 @@ Route::get('api.unit', 'UnitController@apiUnit')->name('api.unit');
 Route::resource('unit', 'UnitController');
 
 Route::get('good', 'GoodController@index');
+Route::get('getCoNumber', 'GoodController@getCoNumber');
 Route::get('api.good', 'GoodController@apiGood')->name('api.good');
 Route::resource('good', 'GoodController');
 Route::post('setbaku', 'GoodController@tambahBahanBaku');

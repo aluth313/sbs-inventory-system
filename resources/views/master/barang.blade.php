@@ -95,7 +95,7 @@
                       <div class="form-group">
                         <label for="co_number" class="col-md-3 control-label">Co Number  :</label>
                         <div class="col-md-8">
-                            <input type="text" id="co_number" name="co_number" class="form-control" autofocus required>
+                            <input type="text" id="co_number" name="co_number" class="form-control" readonly>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
@@ -356,6 +356,14 @@
 
           function addForm(){
               save_method = "add";
+              $.ajax({
+                  url : "{{ url('getCoNumber') }}",
+                  type : "GET",
+                  dataTYpe : "JSON", 
+                  success: function(data) {
+                    $('#co_number').val(parseInt(data) + 1);
+                  }
+              });
               $('input[name=_method]').val('POST');
               $('#modal-barang').modal('show');
               $('#modal-barang form')[0].reset();

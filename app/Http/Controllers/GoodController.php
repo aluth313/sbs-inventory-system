@@ -32,6 +32,13 @@ class GoodController extends Controller
 
         return view('master.barang', compact('data', 'halaman', 'kat', 'mat'));
     }
+    
+    public function getCoNumber()
+    {
+        $co_number = Good::latest()->first()->co_number ?? 0;
+
+        return $co_number;
+    }
 
     /**
      * Show the form for creating a new resource.
