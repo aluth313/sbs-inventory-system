@@ -45,7 +45,7 @@ Route::get('api.unit', 'UnitController@apiUnit')->name('api.unit');
 Route::resource('unit', 'UnitController');
 
 Route::get('good', 'GoodController@index');
-Route::get('getCoNumber', 'GoodController@getCoNumber');
+// Route::get('getCoNumber', 'GoodController@getCoNumber');
 Route::get('api.good', 'GoodController@apiGood')->name('api.good');
 Route::resource('good', 'GoodController');
 Route::post('setbaku', 'GoodController@tambahBahanBaku');
@@ -266,6 +266,8 @@ Route::get('cash_cetak_laporan/{dari}/{sampai}', 'CashController@laporanCash');
 Route::get('flow','FlowController@index');
 Route::get('print_flow/{dari}/{sampai}/{doc?}', 'FlowController@cetakFlow');
 
+Route::get('notif', 'GoodController@notif');
+Route::get('/selesai-produksi/{id}', 'GoodController@selesaiProduksi');
 
 Route::resource('production', 'ProductionController');
 Route::get('api.production', 'ProductionController@apiProduction')->name('api.production');

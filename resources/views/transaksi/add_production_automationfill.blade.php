@@ -54,11 +54,18 @@
                                 <input type="text" class="form-control" id="hardness" name="hardness" value="{{ $good->hardness }}" readonly>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Co Number</label>
+                                <input type="number" class="form-control" id="co_number" name="co_number" value="{{ $co_number == 0 ? 1 : ($co_number+1) }}" readonly>
+                            </div>
+                        </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Deskripsi</label>
-                                <textarea id="description" name="description" class="form-control" style="height: 60px;border-radius: 3px;">{{ $good->description }}</textarea>
+                                <textarea id="description" name="description" class="form-control" style="height: 60px;border-radius: 3px;" readonly>{{ $good->description }}</textarea>
+                                <input type="hidden" id="good_id" name="good_id" value="{{ $good->id }}">
                             </div>
                         </div>
 
@@ -681,6 +688,8 @@
                 var grade = $("#grade").val();
                 var colour = $("#colour").val();
                 var hardness = $("#hardness").val();
+                var co_number = $("#co_number").val();
+                var good_id = $("#good_id").val();
 
                 var csrf_token = $('meta[name="csrf-token"]').attr('content');
                 if (deskripsi == '') alert('Deskripsi Tidak Boleh Kosong...!');
@@ -696,9 +705,12 @@
                         'grade': grade,
                         'colour': colour,
                         'hardness': hardness,
+                        'good_id': good_id,
+                        'co_number': co_number,
                         '_token': csrf_token
                     },
                     success: function(data) {
+                        console.log(data);
                         alert('Production Disimpan...');
                         reloadTable();
                         $('#description').val("");

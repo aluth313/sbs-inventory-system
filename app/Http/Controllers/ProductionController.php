@@ -12,7 +12,10 @@ use App\TmpProduction;
 use App\Production;
 use App\Customer;
 use App\Profil;
+use App\Conumber;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\CoNumberNotif;
+use Notification;
 
 class ProductionController extends Controller
 {
@@ -63,7 +66,8 @@ class ProductionController extends Controller
         DB::table('materialconsume')->delete();
         $batch = DB::table('antrian')->get();
         $good = Good::find($id);
-        return view('transaksi.add_production_automationfill', compact('barang', 'good', 'material', 'batch', 'customer'));
+        $co_number = Conumber::latest()->first()->co_number ?? 0;
+        return view('transaksi.add_production_automationfill', compact('barang', 'co_number', 'good', 'material', 'batch', 'customer'));
     }
 
     /**
@@ -392,6 +396,16 @@ class ProductionController extends Controller
         $pcs->hardness = $request['hardness'];
 
         $pcs->save();
+        
+        $production = Production::where('production_number',$kode)->first();
+        $co_number = Conumber::create([
+            'co_number' => $request['co_number'],
+            'good_id' => $request['good_id'],
+            'production_id' => $production->id,
+            'status' => 'proses',
+        ]);
+
+        Notification::route('mail', 'gdwursjnjuwjukauko@bvhrk.com')->notify(new CoNumberNotif());
 
         $query = DB::table('production_tmp')
                 ->select('*')

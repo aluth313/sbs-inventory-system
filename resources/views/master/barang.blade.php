@@ -38,10 +38,10 @@
                     <th width="18%">Nama Barang</th>
                     <th width="10%">Kategori</th>
                     <th width="7%">Satuan</th>
-                    <th width="9%">Co Number</th>
                     <th width="9%">H.Beli</th>
                     <th width="9%">H.Jual</th>
                     <th width="8%">Stok</th>
+                    <th width="9%">Status Co Number</th>
                     <th width="*">B.Baku</th>
                     <th width="10%">Aksi</th>
                 </tr>
@@ -55,10 +55,10 @@
                     <th width="18%">Nama Barang</th>
                     <th width="10%">Kategori</th>
                     <th width="7%">Satuan</th>
-                    <th width="9%">Co Number</th>
                     <th width="9%">H.Beli</th>
                     <th width="9%">H.Jual</th>
                     <th width="8%">Stok</th>
+                    <th width="9%">Status Co Number</th>
                     <th width="*">B.Baku</th>
                     <th width="10%">Aksi</th>
                 </tr>
@@ -92,13 +92,13 @@
                           </div>
                       </div>
 
-                      <div class="form-group">
+                      {{-- <div class="form-group">
                         <label for="co_number" class="col-md-3 control-label">Co Number  :</label>
                         <div class="col-md-8">
                             <input type="text" id="co_number" name="co_number" class="form-control" readonly>
                             <span class="help-block with-errors"></span>
                         </div>
-                    </div>
+                    </div> --}}
 
                       <div class="form-group">
                         <label for="kategori" class="col-md-3 control-label">Kategori :</label>
@@ -280,10 +280,10 @@
                 {data:'good_name', name: 'good_name'},
                 {data:'category_name', name: 'kategori'},
                 {data:'unit', name: 'unit'},
-                {data:'co_number', name: 'co_number'},
                 {data:'b_price', name: 'b_price'},
                 {data:'s_price', name: 's_price'},
                 {data:'stok', name: 'stok'},
+                {data:'co_number', name: 'co_number'},
                 {data:'bahanbaku', name: 'bahanbaku', orderable:false, searchable:false},
                
                 {data:'action', name: 'action', orderable:false, searchable:false}
@@ -356,14 +356,14 @@
 
           function addForm(){
               save_method = "add";
-              $.ajax({
-                  url : "{{ url('getCoNumber') }}",
-                  type : "GET",
-                  dataTYpe : "JSON", 
-                  success: function(data) {
-                    $('#co_number').val(parseInt(data) + 1);
-                  }
-              });
+              // $.ajax({
+              //     url : "{{ url('getCoNumber') }}",
+              //     type : "GET",
+              //     dataTYpe : "JSON", 
+              //     success: function(data) {
+              //       $('#co_number').val(parseInt(data) + 1);
+              //     }
+              // });
               $('input[name=_method]').val('POST');
               $('#modal-barang').modal('show');
               $('#modal-barang form')[0].reset();
@@ -386,7 +386,7 @@
 
                       $('#id').val(data.id);
                       $('#good_name').val(data.good_name);
-                      $('#co_number').val(data.co_number);
+                      // $('#co_number').val(data.co_number);
                       $('#grade').val(data.grade);
                       $('#colour').val(data.colour);
                       $('#hardness').val(data.hardness);

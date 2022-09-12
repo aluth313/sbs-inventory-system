@@ -10,6 +10,9 @@ use App\Category;
 use DB;
 use App\Material;
 use Auth;
+use App\Notifications\CoNumberNotif;
+use Notification;
+use App\Conumber;
 
 class GoodController extends Controller
 {
@@ -31,6 +34,13 @@ class GoodController extends Controller
         $mat = Material::all();
 
         return view('master.barang', compact('data', 'halaman', 'kat', 'mat'));
+    }
+
+    public function notif()
+    {
+        Notification::route('mail', 'gdwursjnjuwjukauko@bvhrk.com')->notify(new CoNumberNotif());
+        // Notification::send('luthfiahmad36@gmail.com', new CoNumberNotif());
+        return 'berhasil';
     }
     
     public function getCoNumber()
@@ -162,7 +172,8 @@ class GoodController extends Controller
     public function apiGood(){
         $good = DB::table('goods')
                 ->join('categories', 'categories.id','=', 'goods.kategori')
-                ->select('goods.*', 'categories.category_name')->get(); 
+                ->leftjoin('co_numbers','co_numbers.good_id','=','goods.id')
+                ->select('goods.*', 'categories.category_name','co_numbers.co_number','co_numbers.status','co_numbers.id as co_number_id')->get(); 
 
         return Datatables::of($good)
             ->addColumn('b_price', function($good){
@@ -175,6 +186,17 @@ class GoodController extends Controller
 
             ->addColumn('stok', function($good){
                 return '<div style="text-align:right;">'.number_format($good->stok).'</div>';
+            })
+            ->addColumn('co_number', function($good){
+                if ($good->status != null) {
+                    if ($good->status == 'proses') {
+                        return '<div>proses</div>';
+                    }else{
+                        return '<div>'.$good->status.' - '.$good->co_number.'</div>';
+                    }
+                }else{
+                    return '<div>Belum dibuat</div>';
+                }
             })
             
             ->addColumn('bahanbaku', function($good){
@@ -201,11 +223,29 @@ class GoodController extends Controller
 
             ->addColumn('action', function($good){
                 if (in_array(Auth::user()->level, ['ADMIN','KEPALA PRODUKSI'])) {
-                    return '<center><a onclick="editForm('. $good->id.')" style="width:80px;margin-bottom:3px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>'.
-                    '<br><a onclick="deleteData('. $good->id.')" style="width:80px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>'.
-                    '<br><a style="width:80px;" href="/addProductionAutomationFill/'.$good->id.'" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-refresh"></i> Produksi</a></center>';
+                    if ($good->status == 'selesai' || $good->status == 'proses') {
+                        return '<center><a onclick="editForm('. $good->id.')" style="width:80px;margin-bottom:3px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>'.
+                        '<br><a onclick="deleteData('. $good->id.')" style="width:80px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a></center>';
+                    }else{
+                        return '<center><a onclick="editForm('. $good->id.')" style="width:80px;margin-bottom:3px;" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>'.
+                        '<br><a onclick="deleteData('. $good->id.')" style="width:80px;" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>'.
+                        '<br><a style="width:80px;" href="/addProductionAutomationFill/'.$good->id.'" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-refresh"></i> Produksi</a></center>';
+                    }
+                } elseif (in_array(Auth::user()->level, ['ADMIN PRODUKSI'])) {
+                    if ($good->status == 'proses') {
+                        return '<center><a style="width:80px;" href="/selesai-produksi/'.$good->co_number_id.'" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-refresh"></i> Selesai</a></center>';
+                    }
                 }
-            })->rawColumns(['b_price', 's_price', 'stok', 'bahanbaku', 'action'])->make(true);
+            })->rawColumns(['b_price', 's_price', 'stok', 'co_number', 'bahanbaku', 'action'])->make(true);
+    }
+
+    public function selesaiProduksi($id)
+    {
+        $conumberUpdate = Conumber::where('id',$id)->update([
+            'status' => 'selesai'
+        ]);
+
+        return redirect('good');
     }
 
 

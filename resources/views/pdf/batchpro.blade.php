@@ -34,7 +34,7 @@
 			</tr>
 			<tr>
 				<td>CO NUMBER</td>
-				<td>{{ $good->co_number }}</td>
+				{{-- <td>{{ $good->co_number }}</td> --}}
 				<td></td>
 				<td>QTY ORDER</td>
 				<td>{{ $det->quantity }} {{ $det->item_unit }}</td>
